@@ -1,0 +1,53 @@
+{
+    "name": "Clojure Background",
+    "dockerComposeFile": [
+        "../../docker-compose.yml",
+        "../docker-compose.dev.yml"
+    ],
+
+    "service": "clojure",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "betterthantomorrow.calva",
+                // "betterthantomorrow.calva-spritz",
+                "shaunlebron.vscode-parinfer"
+            ],
+            "settings": {
+                "[clojure]": {
+                    // "editor.defaultFormatter": "shaunlebron.vscode-parinfer",
+                    // "parinfer.mode": "smart",
+                    // "editor.autoClosingBrackets": "never",
+                    // "editor.autoClosingOvertype": "never",
+                    // "editor.formatOnPaste": false,
+                    "editor.formatOnType": true
+            },
+                "calva.paredit.defaultKeyMap": "original"
+            },
+            "keybindings": [
+                {
+                  "key": "ctrl+shift+alt+l",
+                  "command": "editor.action.formatDocument",
+                  "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+                }
+            ]
+        }
+    },
+    // Forward ports
+    "forwardPorts": [],
+
+    // User configuration
+    "remoteUser": "vscode",
+    "updateRemoteUserUID": true,
+
+    // Container runtime arguments
+    "workspaceFolder": "/workspaces/01-background",
+   
+    // Allow GPU
+    "hostRequirements": {
+        "gpu": "optional"
+    },
+    
+    // pre-installs all clojure dependencies
+    "postCreateCommand": "echo 'export DISPLAY=host.docker.internal:0' >> ~/.bashrc && clojure -P"
+}

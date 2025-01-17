@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  python:
+    build:
+      context: ./.devcontainer/python
+      dockerfile: python.Dockerfile
+    container_name: python-dev
+    volumes:
+      - .:/workspaces/01-background:cached
+    environment:
+      - PYTHONPATH=/workspaces/01-background/src/python
+      - JUPYTER_PATH=/workspaces/01-background/notebooks
+
+  clojure:
+    build:
+      context: ./.devcontainer/clojure
+      dockerfile: clojure.Dockerfile
+    container_name: clojure-dev
+    volumes:
+      - .:/workspaces/01-background:cached
+    environment:
+      - CLOJURE_DEPS=/workspaces/01-background/deps.edn

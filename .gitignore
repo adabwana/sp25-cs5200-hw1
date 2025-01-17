@@ -1,0 +1,13 @@
+# Yes, but not
+.*
+!.devcontainer/
+!.gitignore
+
+# Language specific
+src/clojure/
+docs/
+*.pyc
+.cpcache/
+.nrepl-port
+
+prompts/

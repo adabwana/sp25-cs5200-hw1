@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  python:
+    build:
+      context: ./.devcontainer/python
+      dockerfile: python.Dockerfile
+    volumes:
+      - .:/workspaces/01-background:cached
+    command: sleep infinity
+
+  clojure:
+    build:
+      context: ./.devcontainer/clojure
+      dockerfile: clojure.Dockerfile
+    volumes:
+      - .:/workspaces/01-background:cached
+    command: sleep infinity
+
+networks:
+  default:
+    name: my_network

@@ -1,0 +1,29 @@
+{
+    "name": "Python Background",
+    "dockerComposeFile": [
+        "../../docker-compose.yml",
+        "../docker-compose.dev.yml"
+    ],
+    "service": "python",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.datawrangler"
+            ]
+        }
+    },
+    // User configuration
+    "remoteUser": "vscode",
+    "updateRemoteUserUID": true,
+
+    // Container runtime arguments
+    "workspaceFolder": "/workspaces/01-background",
+    
+    // Allow GPU
+    "hostRequirements": {
+        "gpu": "optional"
+    }
+}
